@@ -1,37 +1,37 @@
 pipeline {
-	agent any
+	agent any 
 	stages {
-		stage ('First stage') {
+		stage ('stage 1') {
 			steps {
-				echo 'Hi Vineet. This is first stage!!'
+				echo 'Welcome to the pipeline first stage !!'
 			}
 		}
-		
-		stage ('Second Stage') {
+
+		stage ('stage 2') {
 			steps {
-				input ('Do you want to continue?')
+				input ('Do you want to continue? Yes or No?')
 			}
 		}
-		
-		stage ('Third Stage') {
+
+		stage ('stage 3') {
 			when {
 				not {
-					branch 'master'	
+					branch 'master'
 				}
 			}
 			steps {
-				echo 'This is third stage!!'
+				echo 'Hello!! This is stage 3'
 			}
 		}
-		
-		stage ('Fouth Stage') {
+
+		stage ('stage 4') {
 			parallel {
 				stage ('Unit Test') {
 					steps {
-						echo 'Performing Unit Test..'
+						echo 'Running Unit Test. Please wait.......'
 					}
 				}
-				
+
 				stage ('Intergration Test') {
 					agent {
 						docker {
@@ -40,7 +40,7 @@ pipeline {
 						}
 					}
 					steps {
-						echo 'Performing Intergration Test..'
+						echo 'Running Intergration Test. You have to wait !!'
 					}
 				}
 			}
