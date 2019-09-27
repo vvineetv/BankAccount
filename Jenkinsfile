@@ -1,34 +1,34 @@
 pipeline {
 	agent any 
 	stages {
-		stage ('1st Stage') {
+		stage ('Stage No:1') {
 			steps {
-				echo 'Hello!! Welcome to pipeline'
+				echo 'This is first pipeline running in Dhanbad !!'
 			}
 		}
 
-		stage ('2nd Stage') {
+		stage ('Stage No:2') {
 			steps {
-				input ('Do you want to continue to the next step?')
+				input('Do you want to move ahead?')
 			}
 		}
 
-		stage ('3rd Stage') {
+		stage ('Stage No:3') {
 			when {
 				not {
 					branch 'master'
 				}
 			}
 			steps {
-				echo 'Hello this is not master'
+				echo 'Not master !!'
 			}
 		}
 
-		stage ('4th Stage') {
+		stage ('Stage No:4') {
 			parallel {
-				stage ('Unit Test') {
+				stage ('Unit Test Phase') {
 					steps {
-						echo 'Running Unit Test...'
+						echo 'Performing Unit Test. Please wait...'
 					}
 				}
 
@@ -40,7 +40,7 @@ pipeline {
 						}
 					}
 					steps {
-						echo 'Running Intergration Test...'
+						echo 'Performing Intergration Test. Please wait...'
 					}
 				}
 			}
