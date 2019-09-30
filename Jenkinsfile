@@ -1,34 +1,34 @@
 pipeline {
 	agent any 
 	stages {
-		stage ('1st stage Started') {
+		stage ('1st Stage Started') {
 			steps {
-				echo 'Hello, this first stage ***'
+				echo 'First stage started.... HELLO!!!'
 			}
 		}
 
-		stage ('2nd stage Started') {
+		stage ('2nd Stage Started') {
 			steps {
-				input ('Do you want to continue? Haan ya Na?')
+				input ('DO YOU WANT TO PROCEED?')
 			}
 		}
 
-		stage ('3rd stage Started') {
+		stage ('3rd Stage Started') {
 			when {
 				not {
 					branch 'master'
 				}
 			}
 			steps {
-				echo 'This is third stage'
+				echo 'This is the third stage'
 			}
 		}
 
-		stage ('4th stage Started') {
+		stage ('4th Stage Started') {
 			parallel {
 				stage ('Unit Testing') {
 					steps {
-						echo 'Unit Testing Started ***'
+						echo 'Unit Testing started ...'
 					}
 				}
 
@@ -40,7 +40,7 @@ pipeline {
 						}
 					}
 					steps {
-						echo 'Intergration Testing Started ####'
+						echo 'Intergration Testing Started ....'
 					}
 				}
 			}
