@@ -1,46 +1,42 @@
 pipeline {
 	agent any 
 	stages {
-		stage ('Stage No:1') {
+		stage ('1st stage Started') {
 			steps {
-				echo 'This is first pipeline running in Dhanbad !!'
+				echo 'Hello, this first stage ***'
 			}
 		}
 
-		stage ('Stage No:2') {
-			steps {
-				input('Do you want to move ahead?')
-			}
+		stage ('2nd stage Started') {
+			input ('Do you want to continue? Haan ya Na?')
 		}
 
-		stage ('Stage No:3') {
+		stage ('3rd stage Started') {
 			when {
 				not {
 					branch 'master'
 				}
 			}
 			steps {
-				echo 'Not master !!'
+				echo 'This is third stage'
 			}
 		}
 
-		stage ('Stage No:4') {
+		stage ('4th stage Started') {
 			parallel {
-				stage ('Unit Test Phase') {
-					steps {
-						echo 'Performing Unit Test. Please wait...'
-					}
+				stage ('Unit Testing') {
+					echo 'Unit Testing Started ***'
 				}
 
-				stage ('Intergration Test') {
+				stage ('Intergration Testing') {
 					agent {
 						docker {
-							reuseNode false
-							image 'ubuntu'
+							resuseNode false
+							image 'ubunut'
 						}
 					}
 					steps {
-						echo 'Performing Intergration Test. Please wait...'
+						echo 'Intergration Testing Started ####'
 					}
 				}
 			}
