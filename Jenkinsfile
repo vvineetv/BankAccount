@@ -31,7 +31,7 @@ pipeline {
 				stage ('Intergration Testing') {
 					agent {
 						docker {
-							resuseNode false
+							reusseNode false
 							image 'ubunut'
 						}
 					}
