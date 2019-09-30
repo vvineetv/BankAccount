@@ -8,7 +8,9 @@ pipeline {
 		}
 
 		stage ('2nd stage Started') {
-			input ('Do you want to continue? Haan ya Na?')
+			steps {
+				input ('Do you want to continue? Haan ya Na?')
+			}
 		}
 
 		stage ('3rd stage Started') {
