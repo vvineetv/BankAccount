@@ -32,7 +32,7 @@ pipeline {
 					agent {
 						docker {
 							reuseNode false
-							image 'ubunut'
+							image 'ubuntu'
 						}
 					}
 					steps {
