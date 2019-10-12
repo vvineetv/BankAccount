@@ -1,38 +1,38 @@
 pipeline {
 	agent any 
 	stages {
-		stage ('1st Stage Started') {
+		stage('1st Stage') {
 			steps {
-				echo 'First stage started.... HELLO!!!'
+				echo 'Starting first stage of the pipeline'
 			}
 		}
 
-		stage ('2nd Stage Started') {
+		stage ('2nd Stage') {
 			steps {
-				input ('DO YOU WANT TO PROCEED?')
+				input ('Are you sure you want to continue?')
 			}
 		}
 
-		stage ('3rd Stage Started') {
+		stage ('3rd Stage') {
 			when {
 				not {
 					branch 'master'
 				}
 			}
 			steps {
-				echo 'This is the third stage'
+				echo 'Not Master'
 			}
 		}
 
-		stage ('4th Stage Started') {
+		stage ('4th Stage') {
 			parallel {
-				stage ('Unit Testing') {
+				stage ('Unit Testing') { 
 					steps {
-						echo 'Unit Testing started ...'
+						echo 'Unit Testing started..'
 					}
 				}
 
-				stage ('Intergration Testing') {
+				stage ('Integration Testing') {
 					agent {
 						docker {
 							reuseNode false
@@ -40,7 +40,7 @@ pipeline {
 						}
 					}
 					steps {
-						echo 'Intergration Testing Started ....'
+						echo 'Integration Testing started..'
 					}
 				}
 			}
