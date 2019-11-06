@@ -1,46 +1,48 @@
-pipeline {
+pipeline{
 	agent any 
-	stages {
-		stage ('1st Stage') {
+	stages{
+		stage('Stage No:1'){
 			steps {
-				echo '1st Stage started!!'
+				echo 'Stage No:1 running'
 			}
 		}
 
-		stage ('2nd Stage') {
+		stage('Stage No:2'){
 			steps {
-				input('Are you sure you want to continue?')
+				input('Are you sure, you want to continue?')
 			}
 		}
 
-		stage ('3rd Stage') {
-			when {
-				not {
+		stage('Stage No:3'){
+			when{
+				not{
 					branch 'master'
 				}
 			}
 
-			steps {
-				echo 'Not master please!!'
+			steps{
+				echo 'NOT MASTER!!'
 			}
 		}
 
-		stage ('4th Stage') {
-			parallel {
-				stage ('Unit Testing') {
-					echo 'Unit testing started !!'
+		stage(Stage No:4){
+			parallel{
+				stage('Unit Testing'){
+					steps{
+						echo 'Unit testing started!!'
+					}
 				}
 
-				stage ('Intergration Testing') {
-					agent {
-						docker {
+				stage('Integration Testing'){
+					agent{
+						docker{
 							reuseNode false
 							image 'ubuntu'
 						}
 					}
 
-					steps {
-						echo 'Integration Testing started!!!'
+					steps{
+						echo 'Unit Testing started!!'
 					}
 				}
 			}
